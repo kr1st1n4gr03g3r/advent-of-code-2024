@@ -1,38 +1,32 @@
 const fs = require("fs");
-// const { updateSolution } = require("../utils/update-solution");
+const { updateSolution } = require("../utils/update-solution");
 
 // Read data from input.txt
 const input = fs.readFileSync("input.txt", "utf8");
 
-// 3D array:
-const pairedArray = input
-  .trim() // remove whitespace
-  .split("\n") // split by lines
-  .map((line) => {
-    const numbers = line.split(/\s+/).map(Number); // Split by whitespace and convert to Numbers
-    return numbers.map((num) => [num]); // Nest each array into it's own array
-  });
+// Helper function to parse input and extract columns
+function extractColumn(input, columnIndex) {
+  return input
+    .trim() // Remove whitespace
+    .split("\n") // Split by lines
+    .map((line) => line.split(/\s+/).map(Number)[columnIndex]) // Split by whitespace and get the specific column
+    .sort((a, b) => a - b); // Sort in ascending order
+}
 
-// Sort array from smallest to largest by column A and B:
-const arrayA = pairedArray.map((pair) => pair[0][0]); // Extract first number in pair
-arrayA.sort(); // sort
-// console.log("Array A:", arrayA);
+// Helper function to calculate absolute differences between two arrays
+function calculateDifferences(arrayA, arrayB) {
+  return arrayA.map((value, index) => Math.abs(value - arrayB[index]));
+}
 
-const arrayB = pairedArray.map((pair) => pair[1][0]); // Extract second number in pair
-arrayB.sort(); // sort
-// console.log("Array B:", arrayB);
+// Extract and sort columns
+const arrayA = extractColumn(input, 0); // First column
+const arrayB = extractColumn(input, 1); // Second column
 
-// Recombine arrays making pairs with the lowest to highest numbers:
-const recombineArray = arrayA.map((value, index) => [value, arrayB[index]]);
-// console.log(recombineArray);
+// Calculate differences
+const differences = calculateDifferences(arrayA, arrayB);
 
-// Find the differences:
-const differences = recombineArray.map(([a, b]) => [Math.abs(a - b)]);
+// Calculate the total sum of differences
+const totalSum = differences.reduce((sum, num) => sum + num, 0); // Sum all numbers
 
-// console.log("Differences (Positive):", differences);
-
-const totalSum = differences
-  .flat() // Flatten into single array
-  .reduce((sum, num) => sum + num, 0); // sum of all numbers
-
-console.log("Total Sum:", totalSum);
+// Push the final result to solution.md under ## Conclusion
+updateSolution(`Total Sum: ${totalSum}`);
