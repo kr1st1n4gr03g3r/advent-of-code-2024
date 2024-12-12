@@ -1,10 +1,30 @@
-# Day 1 Solution
+# Day 01 Solution
 
 ## Problem
-_Describe the problem here._
+
+### Task:
 
 ## Approach
-_Explain your approach to solving the problem._
 
+#### Pseudo Code:
+
+## Spoiler ahead:
+```
+       *
+      /|\
+     /*|O\
+    /*/|\*\
+   /X/O|\X\0\
+  /*/X/|\X*-*\
+ //O//X|O\X\o\2\
+/X/O/*/X|\O\X**o\
+    |X| |X|
+
+Merry Christmas! 🎄
+
+```
 ## Conclusion
-_Summarize what you learned, challenges, or other key points._
+
+## Summary
+
+_I am feeling x
