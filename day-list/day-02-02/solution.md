@@ -87,4 +87,4 @@ Merry Christmas! 🎄
 ```
 ## Summary
 
-_I am feeling spicy 🌶️_
+_I am feeling weird 👽_
