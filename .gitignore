@@ -3,3 +3,5 @@ eslint.config.mjs
 *.mjs
 /eslint.config.mjs
 /*.mjs
+.DS_Store
+/.DS_Store
