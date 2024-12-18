@@ -1,4 +1,5 @@
 const fs = require("fs");
+const { updateSolution } = require("../../utils/update-solution");
 
 // Read input file and split into lines
 const input = fs.readFileSync("input.txt", "utf8").toString().split("\n");
@@ -90,3 +91,5 @@ updatedPageNumbers.forEach((update) => {
 
 // Output the result
 console.log(`Sum of Middle Page Numbers (Corrected): ${correctedMiddleSum}`);
+
+updateSolution();
